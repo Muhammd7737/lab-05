@@ -51,15 +51,6 @@ fun CityListScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
         ) {
-            Button(
-                onClick = {
-                    deleteMode = !deleteMode
-                    if (deleteMode) selectedCity = null
-                }
-            ) {
-                Text(if (deleteMode) "Cancel Delete" else "Delete City")
-            }
-
             FloatingActionButton(
                 modifier = Modifier.padding(16.dp),
                 onClick = {
@@ -169,6 +160,7 @@ fun CityListScreen(
                 }
             }
         }
+
         LazyColumn(modifier = Modifier.weight(1f)) {
             itemsIndexed(cities) { index, city ->
                 CityRow(
@@ -192,6 +184,14 @@ fun CityListScreen(
                     HorizontalDivider()
                 }
             }
+        }
+        Button(
+            onClick = {
+                deleteMode = !deleteMode
+                if (deleteMode) selectedCity = null
+            }
+        ) {
+            Text(if (deleteMode) "Cancel Delete" else "Delete City")
         }
     }
 }
